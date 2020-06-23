@@ -1,17 +1,20 @@
-<h3>All the Events created by <%= @user.username %>:</h3>
+<h2>Hi <%= @user.username %>, these are all your events:</h2>
 
-<% @user.events.each do |event| %>
+
+<h3>Upcoming events:</h3>
+<% @upcoming_events.each do |event| %>
 <p>
-	<strong>Location:</strong> <%= event.location %><br/> 
-	<strong>Event Date:</strong> <%= event.event_date %>			
+	<strong>Location:</strong> <%= event.location %><br />
+	<strong>Date:</strong> <%= event.event_date %>
 </p>
 <% end %>
 
-<h3><%= @user.username %> is attending these events:</h3>
-
-<% @user.attended_events.each do |event| %>
+<h3>Past events:</h3>
+<% @previous_events.each do |event| %>
 <p>
-	<%= event.location %><br />
-	<%= event.event_date %>
+	<strong>Location:</strong> <%= event.location %><br />
+	<strong>Date:</strong> <%= event.event_date %>
 </p>
 <% end %>
+
+
