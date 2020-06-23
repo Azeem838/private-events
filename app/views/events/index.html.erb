@@ -1,8 +1,20 @@
+<%= link_to 'Create Event', new_event_path %>
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path) %>  
+  </li>
+<% end %>
+
 <h2>Upcoming Events</h2>
 <% upcoming.each do |event|%>
 	<p>
 		<strong>Location:</strong> <%= event.location %><br/> 
 		<strong>Event Date:</strong> <%= event.event_date %><br/> 
+		<strong>Hosted <em>by:</em></strong> <%= link_to event.creator.username, user_path(event.creator_id) %>
 	</p>
 <% end %>
 
@@ -12,6 +24,7 @@
 	<p>
 		<strong>Location:</strong> <%= event.location %><br/> 
 		<strong>Event Date:</strong> <%= event.event_date %><br/> 
+		<strong>Hosted <em>by:</em></strong> <%= link_to event.creator.username, user_path(event.creator_id) %>
 	</p>
 <% end %>
 

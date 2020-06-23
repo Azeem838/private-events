@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-	helper_method :upcoming, :past 
+  helper_method :upcoming, :past
   def new
     @event = Event.new
   end
@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def shows
+  def show
     @event = Event.find(params[:id])
     @user = User.find(@event.creator_id)
   end
@@ -22,23 +22,19 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(events_params)
-    # @event = Event.new(params[:id])
-
-    #   respond_to do |format|
-    #     if @blog.save
-    #       format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-
-    #     else
-    #       format.html { render :new }
-    #       format.json { render json: @blog.errors, status: :unprocessable_entity }
-    #     end
-    #   end
+    @event = current_user.events.build(event_params)
+    if @event.save
+      flash[:notice] = 'You have successfully created an event'
+      redirect_to root_path
+    else
+      flash.now[:alert] = 'Please fix the errors'
+      redirect_to 'new'
+    end
   end
 
   private
 
   def event_params
-    require(:events).permit(:location, :event_date)
+    params.require(:event).permit(:location, :event_date)
   end
 end

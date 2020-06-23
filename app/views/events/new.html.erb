@@ -1,20 +1,9 @@
 <h1>New event page</h1>
 
- 
-<%= form_with(url: "/events", method: "post") do %>
-  <%= label_tag(:location, "Add Location of the Event:") %></br>
-  <%= text_field_tag(:location) %> </br></br>
-
-  <%= label_tag(:event_date, "Add Event date:") %></br>
-  <%= text_field_tag(:event_date) %> </br></br>
-
-  <%= submit_tag("Submit") %>
+<%= form_with(model: @event, method: "post") do |form| %>
+  <%= form.label :location %><br />
+  <%= form.text_field :location %><br />
+  <%= form.label :event_date %><br />
+  <%= form.text_field :event_date %><br />
+  <%= form.submit "Create" %><br />
 <% end %>
- 
-
-<!--
-<%= form_with model: @event do |form| %>
- <%= form.text_field :description %>
- <%= form.submit "Create" %>
-<% end %>
--->
