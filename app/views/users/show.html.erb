@@ -2,21 +2,46 @@
 
 <h2>Hi <%= @user.username %>, these are all your events:</h2>
 
-
+<h2>Events you have created:</h2>
 <h3>Upcoming events:</h3>
 <% @upcoming_events.each do |event| %>
-<p>
-	<strong>Location:</strong> <%= event.location %><br />
-	<strong>Date:</strong> <%= event.event_date %>
-</p>
+	<p>
+		<% if event.creator_id == @user.id %>
+			<strong>Location:</strong> <%= event.location %><br />
+			<strong>Date:</strong> <%= event.event_date %>
+		<% end %>
+	</p>
 <% end %>
 
 <h3>Past events:</h3>
 <% @previous_events.each do |event| %>
-<p>
-	<strong>Location:</strong> <%= event.location %><br />
-	<strong>Date:</strong> <%= event.event_date %>
-</p>
+	<% if event.creator_id == @user.id %>
+	<p>
+		<strong>Location:</strong> <%= event.location %><br />
+		<strong>Date:</strong> <%= event.event_date %>
+	</p>
+	<% end %>
 <% end %>
+
+<h2>Events you are attending:</h2>
+<h3>Upcoming events:</h3>
+<% @user.attended_events.each do |event| %>
+	<% if Time.now < event.event_date %>
+	<p>
+			<strong>Location:</strong> <%= event.location %><br />
+			<strong>Date:</strong> <%= event.event_date %>
+	</p>
+	<% end %>
+<% end %>
+<h3>Past events:</h3>
+<% @user.attended_events.each do |event| %>
+	<% if Time.now > event.event_date %>
+	<p>
+		<strong>Location:</strong> <%= event.location %><br />
+		<strong>Date:</strong> <%= event.event_date %>
+	</p>
+	<% end %>
+<% end %>
+
 
 
