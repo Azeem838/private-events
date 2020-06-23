@@ -6,14 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = @user.events + @user.attended_events
-    @upcoming_events = []
-    @previous_events = []
-    @events.each do |event|
-      if Time.now < event.event_date
-        @upcoming_events << event
-      else
-        @previous_events << event
-      end
-    end
+    @upcoming_events = Event.upcoming
+    @previous_events = Event.past
   end
 end

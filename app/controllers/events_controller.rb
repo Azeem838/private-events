@@ -14,19 +14,11 @@ class EventsController < ApplicationController
   end
 
   def past
-    past_events = []
-    Event.all.each do |event|
-      past_events << event if event.event_date < Time.now
-    end
-    past_events
+    Event.past
   end
 
   def upcoming
-    upcoming_events = []
-    Event.all.each do |event|
-      upcoming_events << event if event.event_date >= Time.now
-    end
-    upcoming_events
+    Event.upcoming
   end
 
   def create
