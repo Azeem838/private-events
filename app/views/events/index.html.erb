@@ -1,1 +1,8 @@
-<h1> event index page</h1>
+<h1>Event page</h1>
+<% @events.each do |event|%>
+<p>
+	<strong>Location:</strong> <%= event.location %><br/> 
+	<strong>Event Date:</strong> <%= event.event_date %><br/> 
+</p>
+
+<% end %>
