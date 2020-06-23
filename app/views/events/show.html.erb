@@ -1,6 +1,4 @@
-<h1>show event page</h1>
-
-
+<h1>Event details</h1>
 
 <p>
 	<strong>Location:</strong> <%= @event.location %><br/> 
@@ -8,8 +6,11 @@
 	<strong>Creator:</strong> <%= @user.username %>		
 </p>
 
-<% @event.attendees.each do |attendee| %>
-	<h4>Attendees: </h4>
-		<%= attendee.username %><br />
-		<%= attendee.email %>
+<h4>Attendees: </h4>
+<% @event.attendees.each do |attendee| %>	
+	<p>
+		<strong>Username:</strong> <%= attendee.username %><br />
+		<strong>Email:</strong> <%= attendee.email %><br />
+		<br />
+	</p>
 <% end %>
