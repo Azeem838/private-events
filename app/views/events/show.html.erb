@@ -7,3 +7,9 @@
 	<strong>Event Date:</strong> <%= @event.event_date %><br/> 
 	<strong>Creator:</strong> <%= @user.username %>		
 </p>
+
+<% @event.attendees.each do |attendee| %>
+	<h4>Attendees: </h4>
+		<%= attendee.username %><br />
+		<%= attendee.email %>
+<% end %>
