@@ -8,5 +8,14 @@
     <td><%= link_to event.location, event_path(event) %></td>
     <td><%= event.event_date %></>
     <td><%= link_to event.creator.username, user_path(event.creator_id) %></td>
+    <% if user_signed_in? %>
+      <% if current_user != event.creator && !event.attendees.include?(current_user) %> 
+        <%= form_with(url: "/invites", method: "post") do |form| %>
+          <%= form.hidden_field :event_id, value: event.id %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <td><%= form.submit "Attend" %></td>
+        <% end %>
+      <% end %>
+    <% end %>
   </tr>
 <% end %>
