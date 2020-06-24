@@ -2,6 +2,7 @@
   <li>
   <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
   <%= link_to 'Create Event', new_event_path %>
+  <%= link_to 'See your Events', user_path(current_user.id) %>
   </li>
 <% else %>
   <li>
