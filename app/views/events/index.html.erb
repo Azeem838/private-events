@@ -11,23 +11,17 @@
 
 <h2>Upcoming Events</h2>
 <h3>(click a location to view the event show page)</h3>
-<% upcoming.each do |event|%>
-	<p>
-		<strong>Location:</strong> <%= link_to event.location, event_path(event) %><br/> 
-		<strong>Event Date:</strong> <%= event.event_date %><br/> 
-		<strong>Hosted <em>by:</em></strong> <%= link_to event.creator.username, user_path(event.creator_id) %>
-	</p>
-<% end %>
+
+<table>
+	<%= render 'event', obj: upcoming %>
+</table>
 
 
 <h2>Past Events</h2>
 <h3>(click a location to view the event show page)</h3>
-<% past.each do |event|%>
-	<p>
-		<strong>Location:</strong> <%= link_to event.location, event_path(event) %><br/> 
-		<strong>Event Date:</strong> <%= event.event_date %><br/> 
-		<strong>Hosted <em>by:</em></strong> <%= link_to event.creator.username, user_path(event.creator_id) %>
-	</p>
-<% end %>
+<table>
+	<%= render 'event', obj: past %>
+</table>
+
 
 

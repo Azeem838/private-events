@@ -1,0 +1,12 @@
+<tr>
+  <th>Location</th>
+  <th>Event Date</th>
+  <th>Hosted by</th>
+</tr>
+<% obj.each do |event|%>
+  <tr>
+    <td><%= link_to event.location, event_path(event) %></td>
+    <td><%= event.event_date %></>
+    <td><%= link_to event.creator.username, user_path(event.creator_id) %></td>
+  </tr>
+<% end %>

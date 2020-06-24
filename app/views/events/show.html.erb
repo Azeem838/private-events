@@ -1,17 +1,29 @@
 <%= link_to 'All events', root_path %>
 <h1>Event details</h1>
 
-<p>
-	<strong>Location:</strong> <%= @event.location %><br/> 
-	<strong>Event Date:</strong> <%= @event.event_date %><br/> 
-	<strong>Creator:</strong> <%= @user.username %>		
-</p>
+<table>
+	<tr>
+			<th>Location</th>
+			<th>Event Date</th>
+			<th>Creator</th>
+	</tr>
+	<tr>
+		<td><%= @event.location %></td>
+		<td><%= @event.event_date %></td>
+		<td><%= @user.username %></td>	
+	</tr>
+	</table>
 
 <h4>Attendees: </h4>
+<table>
+	<tr>
+			<th>Username</th>
+			<th>Email</th>
+	</tr>
 <% @event.attendees.each do |attendee| %>	
-	<p>
-		<strong>Username:</strong> <%= attendee.username %><br />
-		<strong>Email:</strong> <%= attendee.email %><br />
-		<br />
-	</p>
-<% end %>
+		<tr>
+			<td><%= attendee.username %></td>
+			<td><%= attendee.email %></td>
+		</tr>
+	<% end %>
+</table>

@@ -4,44 +4,26 @@
 
 <h2>Events you have created:</h2>
 <h3>Upcoming events:</h3>
-<% @upcoming_events.each do |event| %>
-	<p>
-		<% if event.creator_id == @user.id %>
-			<strong>Location:</strong> <%= event.location %><br />
-			<strong>Date:</strong> <%= event.event_date %>
-		<% end %>
-	</p>
-<% end %>
+
+<table>
+	<%= render "events/event", obj: @upcoming_events %>
+</table>
+
 
 <h3>Past events:</h3>
-<% @previous_events.each do |event| %>
-	<% if event.creator_id == @user.id %>
-	<p>
-		<strong>Location:</strong> <%= event.location %><br />
-		<strong>Date:</strong> <%= event.event_date %>
-	</p>
-	<% end %>
-<% end %>
+<table>
+	<%= render "events/event", obj: @previous_events %>
+</table>
 
 <h2>Events you are attending:</h2>
 <h3>Upcoming events:</h3>
-<% @user.attended_events.each do |event| %>
-	<% if Time.now < event.event_date %>
-	<p>
-			<strong>Location:</strong> <%= event.location %><br />
-			<strong>Date:</strong> <%= event.event_date %>
-	</p>
-	<% end %>
-<% end %>
+<table>
+	<%= render "events/event", obj: @user.attended_events.upcoming %>
+</table>
 <h3>Past events:</h3>
-<% @user.attended_events.each do |event| %>
-	<% if Time.now > event.event_date %>
-	<p>
-		<strong>Location:</strong> <%= event.location %><br />
-		<strong>Date:</strong> <%= event.event_date %>
-	</p>
-	<% end %>
-<% end %>
+<table>
+	<%= render "events/event", obj: @user.attended_events.past %>
+</table>
 
 
 
