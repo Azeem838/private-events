@@ -1,4 +1,4 @@
-class Invite < ActiveRecord::Migration[6.0]
+class AddInviteTable < ActiveRecord::Migration[6.0]
   def change
     create_table :invites do |t|
       t.integer :user_id
