@@ -1,17 +1,14 @@
 # require 'test_helper'
-require './spec/spec_helper'
-require './spec/rails_helper'
+require 'spec_helper'
+# require 'rails_helper'
 
 class EventTest < ActiveSupport::TestCase
   RSpec.describe Event, :type => :model do
 	  subject {
 	    described_class.new(location: "Anything",
 	                        event_date: DateTime.now,
-	                        creator_id: 1,
-	                        id: 1,
-	                        created_at: DateTime.now,
-	                        updated_at: DateTime.now
-	                      )
+	                        creator_id: 1
+	                        )
 	  }
 
 	  it "is valid with valid attributes" do
