@@ -34,9 +34,6 @@ group :development, :test do
   gem 'better_errors', '~> 2.7', '>= 2.7.1'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop', '~>0.81.0'
-  gem 'database_cleaner'
-  gem 'rspec', '~> 3.9'
-  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
 end
 
 group :development do
@@ -44,8 +41,8 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'spring'
-  # gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
