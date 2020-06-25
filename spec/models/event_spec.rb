@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   describe 'validations' do
     it 'should validate presence of location' do
-      user = User.create!(username: 'test', email: 'test@example.com', password: 'password')
+      User.create!(username: 'test', email: 'test@example.com', password: 'password')
       event = Event.new(location: 'Somewhere', event_date: DateTime.now, creator_id: 1)
       expect(event.valid?).to be true
     end
