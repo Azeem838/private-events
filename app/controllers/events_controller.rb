@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   helper_method :upcoming, :past
   def new
+    # byebug
     @event = Event.new
   end
 
@@ -28,7 +29,7 @@ class EventsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:alert] = 'Please fix the errors'
-      redirect_to 'new'
+      render 'new'
     end
   end
 
