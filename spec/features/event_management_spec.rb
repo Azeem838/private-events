@@ -34,20 +34,20 @@ feature 'create an event' do
       expect(page).to have_content 'New event page'
     end
   end
+end
 
-  feature 'attend an event' do
-    before(:each) do
-      user = User.create!(username: 'testme', email: 'test@example.com', password: 'f4k3p455w0rd')
-      Event.create!(location: 'Somewhere', event_date: DateTime.now, creator_id: user.id)
-      @user1 = User.create!(username: 'testme1', email: 'test1@example.com', password: 'f4k3p455w0rd')
-      sign_in @user1
-      visit root_path
-    end
+feature 'attend an event' do
+  before(:each) do
+    user = User.create!(username: 'testme', email: 'test@example.com', password: 'f4k3p455w0rd')
+    Event.create!(location: 'Somewhere', event_date: DateTime.now, creator_id: user.id)
+    @user1 = User.create!(username: 'testme1', email: 'test1@example.com', password: 'f4k3p455w0rd')
+    sign_in @user1
+    visit root_path
+  end
 
-    scenario 'clicking attend' do
-      click_on 'Attend'
-      visit user_path(@user1.id)
-      expect(page).to have_content 'Somewhere'
-    end
+  scenario 'clicking attend' do
+    click_on 'Attend'
+    visit user_path(@user1.id)
+    expect(page).to have_content 'Somewhere'
   end
 end
