@@ -1,0 +1,28 @@
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  <%= link_to 'Create Event', new_event_path %>
+  <%= link_to 'See your Events', user_path(current_user.id) %>
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path) %>  
+  </li>
+<% end %>
+
+<h2>Upcoming Events</h2>
+<h3>(click a location to view the event show page)</h3>
+
+<table>
+	<%= render 'event', obj: upcoming %>
+</table>
+
+
+<h2>Past Events</h2>
+<h3>(click a location to view the event show page)</h3>
+<table>
+	<%= render 'event', obj: past %>
+</table>
+
+
+

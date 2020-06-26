@@ -1,0 +1,29 @@
+<%= link_to 'All events', events_path %>
+
+<h2>Hi <%= @user.username %>, these are all your events:</h2>
+
+<h2>Events you have created:</h2>
+<h3>Upcoming events:</h3>
+
+<table>
+	<%= render "events/event", obj: @upcoming_events %>
+</table>
+
+
+<h3>Past events:</h3>
+<table>
+	<%= render "events/event", obj: @previous_events %>
+</table>
+
+<h2>Events you are attending:</h2>
+<h3>Upcoming events:</h3>
+<table>
+	<%= render "events/event", obj: @user.attended_events.upcoming %>
+</table>
+<h3>Past events:</h3>
+<table>
+	<%= render "events/event", obj: @user.attended_events.past %>
+</table>
+
+
+
